@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Portal KGH</title>
+    <style>
+        /* Reset agar tidak ada margin bawaan */
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* PENTING: Mencegah scroll pada body utama */
+            background-color: #f8f9fa;
+        }
+
+        /* Iframe dipaksa menempel ke 4 sisi layar */
+        iframe {
+            position: fixed; /* KUNCI UTAMA: Fixed position agar tidak terdorong address bar */
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <iframe src="https://script.google.com/macros/s/AKfycbyVs-G-jZdahpx77qxFoVrgOPo7zyObJWAT2NO1pSR4g7AQUACIBARaKxfJl2GBSyAg/exec"></iframe>
+</body>
+</html>
