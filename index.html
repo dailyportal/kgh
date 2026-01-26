@@ -12,22 +12,21 @@
 	<meta name="theme-color" content="#0d6efd">
 	<link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1nzRjcglyejSjSpiXG0iAn4tnIh7zUUz3">
 	<link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/1nzRjcglyejSjSpiXG0iAn4tnIh7zUUz3">
-
+	
     <style>
-        /* Reset */
+        /* Reset agar tidak ada margin bawaan */
         html, body {
             height: 100%;
             width: 100%;
             margin: 0;
             padding: 0;
-            overflow: hidden;
-            background-color: #f8f9fa; /* Warna background loading */
-            font-family: sans-serif;
+            overflow: hidden; /* PENTING: Mencegah scroll pada body utama */
+            background-color: #f8f9fa;
         }
 
-        /* Iframe Fullscreen */
+        /* Iframe dipaksa menempel ke 4 sisi layar */
         iframe {
-            position: fixed;
+            position: fixed; /* KUNCI UTAMA: Fixed position agar tidak terdorong address bar */
             top: 0;
             left: 0;
             bottom: 0;
@@ -35,18 +34,13 @@
             width: 100%;
             height: 100%;
             border: none;
-            z-index: 2; /* Di atas loader */
-            /* Transisi agar munculnya halus */
-            opacity: 0; 
-            transition: opacity 0.5s ease;
+            z-index: 1;
         }
-
     </style>
 </head>
 <body>
-
+    
     <iframe 
-        id="appFrame"
         src="https://script.google.com/macros/s/AKfycbwQ3Ao9haU0rOS8BNJTYNCFG8OS6kRgXZEZ4qLLxYnaxwTQI9vBqYwVrX5K_n2R-JFW/exec"
         allow="camera; microphone; geolocation; fullscreen">
     </iframe>
