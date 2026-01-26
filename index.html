@@ -41,58 +41,14 @@
             transition: opacity 0.5s ease;
         }
 
-        /* Loading Animation (Muncul sebelum GAS siap) */
-        .loader-wrapper {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1; /* Di bawah iframe */
-        }
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid #ddd;
-            border-top: 4px solid #0d6efd; /* Warna Primary */
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 15px;
-        }
-        .loading-text {
-            color: #666;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
 
-    <div class="loader-wrapper">
-        <div class="spinner"></div>
-        <div class="loading-text">Memuat Sistem...</div>
-    </div>
-
     <iframe 
         id="appFrame"
         src="https://script.google.com/macros/s/AKfycbwQ3Ao9haU0rOS8BNJTYNCFG8OS6kRgXZEZ4qLLxYnaxwTQI9vBqYwVrX5K_n2R-JFW/exec"
-        allow="camera; microphone; geolocation; fullscreen"
-        onload="onAppLoaded()">
+        allow="camera; microphone; geolocation; fullscreen">
     </iframe>
-
-    <script>
-        // Logika sederhana: Saat iframe selesai loading, tampilkan iframe
-        function onAppLoaded() {
-            var iframe = document.getElementById('appFrame');
-            // Beri sedikit delay agar rendering GAS sempurna
-            setTimeout(function() {
-                iframe.style.opacity = '1';
-            }, 500);
-        }
-    </script>
-
 </body>
 </html>
