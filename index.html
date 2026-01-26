@@ -3,21 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Portal KGH</title>
+    
+    <title>Portal Warga</title>
+    <meta name="description" content="Aplikasi pelayanan warga, pembayaran IPL, dan pencatatan meteran air.">
+    <meta property="og:title" content="Portal Warga">
+    <meta property="og:description" content="Layanan mandiri warga untuk kemudahan akses informasi dan pembayaran.">
+    <meta property="og:image" content="https://lh3.googleusercontent.com/d/1nzRjcglyejSjSpiXG0iAn4tnIh7zUUz3"> 
+	<meta name="theme-color" content="#0d6efd">
+	<link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1nzRjcglyejSjSpiXG0iAn4tnIh7zUUz3">
+	<link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/1nzRjcglyejSjSpiXG0iAn4tnIh7zUUz3">
+
     <style>
-        /* Reset agar tidak ada margin bawaan */
+        /* Reset */
         html, body {
             height: 100%;
             width: 100%;
             margin: 0;
             padding: 0;
-            overflow: hidden; /* PENTING: Mencegah scroll pada body utama */
-            background-color: #f8f9fa;
+            overflow: hidden;
+            background-color: #f8f9fa; /* Warna background loading */
+            font-family: sans-serif;
         }
 
-        /* Iframe dipaksa menempel ke 4 sisi layar */
+        /* Iframe Fullscreen */
         iframe {
-            position: fixed; /* KUNCI UTAMA: Fixed position agar tidak terdorong address bar */
+            position: fixed;
             top: 0;
             left: 0;
             bottom: 0;
@@ -25,11 +35,64 @@
             width: 100%;
             height: 100%;
             border: none;
-            z-index: 1;
+            z-index: 2; /* Di atas loader */
+            /* Transisi agar munculnya halus */
+            opacity: 0; 
+            transition: opacity 0.5s ease;
         }
+
+        /* Loading Animation (Muncul sebelum GAS siap) */
+        .loader-wrapper {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1; /* Di bawah iframe */
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #ddd;
+            border-top: 4px solid #0d6efd; /* Warna Primary */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+        .loading-text {
+            color: #666;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
-    <iframe src="https://script.google.com/macros/s/AKfycbwQ3Ao9haU0rOS8BNJTYNCFG8OS6kRgXZEZ4qLLxYnaxwTQI9vBqYwVrX5K_n2R-JFW/exec"></iframe>
+
+    <div class="loader-wrapper">
+        <div class="spinner"></div>
+        <div class="loading-text">Memuat Sistem...</div>
+    </div>
+
+    <iframe 
+        id="appFrame"
+        src="https://script.google.com/macros/s/AKfycbwQ3Ao9haU0rOS8BNJTYNCFG8OS6kRgXZEZ4qLLxYnaxwTQI9vBqYwVrX5K_n2R-JFW/exec"
+        allow="camera; microphone; geolocation; fullscreen"
+        onload="onAppLoaded()">
+    </iframe>
+
+    <script>
+        // Logika sederhana: Saat iframe selesai loading, tampilkan iframe
+        function onAppLoaded() {
+            var iframe = document.getElementById('appFrame');
+            // Beri sedikit delay agar rendering GAS sempurna
+            setTimeout(function() {
+                iframe.style.opacity = '1';
+            }, 500);
+        }
+    </script>
+
 </body>
 </html>
