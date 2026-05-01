@@ -3,53 +3,189 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembaruan Sistem - Portal Warga</title>
 
-    <title>Portal Warga</title>
-    <meta name="description" content="Aplikasi pelayanan warga, pembayaran IPL, dan pencatatan meteran air.">
-    <meta property="og:title" content="Portal Warga">
-    <meta property="og:description" content="Layanan mandiri warga untuk kemudahan akses informasi dan pembayaran.">
-    <meta property="og:image" content="https://lh3.googleusercontent.com/d/1nzRjcglyejSjSpiXG0iAn4tnIh7zUUz3">
-    <meta name="theme-color" content="#0d6efd">
-    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1nzRjcglyejSjSpiXG0iAn4tnIh7zUUz3">
-    <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/1nzRjcglyejSjSpiXG0iAn4tnIh7zUUz3">
+    <!-- Google Fonts & Material Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <style>
-        /* Reset agar tidak ada margin bawaan */
-        html,
-        body {
-            height: 100%;
-            width: 100%;
+        /* Base & Reset */
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            overflow: hidden;
-            /* PENTING: Mencegah scroll pada body utama */
-            background-color: #f8f9fa;
         }
 
-        /* Iframe dipaksa menempel ke 4 sisi layar */
-        iframe {
-            position: fixed;
-            /* KUNCI UTAMA: Fixed position agar tidak terdorong address bar */
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Gradient background modern */
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Container Card */
+        .maintenance-card {
+            background: #ffffff;
+            max-width: 550px;
+            width: 100%;
+            padding: 50px 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Dekorasi Sudut */
+        .maintenance-card::before {
+            content: '';
+            position: absolute;
             top: 0;
             left: 0;
-            bottom: 0;
-            right: 0;
             width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #0d6efd, #0dcaf0);
+        }
+
+        /* Animasi Ikon Gear */
+        .icon-wrapper {
+            font-size: 80px;
+            color: #0d6efd;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #1f2937;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        p {
+            font-size: 1.05rem;
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* Animated Progress Bar */
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: #f3f4f6;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .progress-bar {
             height: 100%;
-            border: none;
-            z-index: 1;
+            background: linear-gradient(90deg, #0d6efd, #0dcaf0);
+            border-radius: 10px;
+            animation: loadProgress 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes loadProgress {
+            0% {
+                width: 30%;
+            }
+
+            100% {
+                width: 80%;
+            }
+        }
+
+        /* Button / Kontak */
+        .btn-contact {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            background: #f8f9fa;
+            color: #4b5563;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .btn-contact .material-icons {
+            font-size: 20px;
+            margin-right: 8px;
+        }
+
+        .btn-contact:hover {
+            background: #0d6efd;
+            color: #ffffff;
+            border-color: #0d6efd;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(13, 110, 253, 0.2);
+        }
+
+        /* Responsif untuk Layar Mobile */
+        @media (max-width: 576px) {
+            .maintenance-card {
+                padding: 40px 20px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            p {
+                font-size: 0.95rem;
+            }
+
+            .icon-wrapper {
+                font-size: 64px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <iframe
-        src="https://script.google.com/macros/s/AKfycbw1_vuuM4CY0mU8dDK2_JHjyKW5aEKS9OSKtnDIqIPytA8eXAP_uvP0BNpUqF6OJTdo/exec"
-        allow="camera; microphone; geolocation; fullscreen">
-    </iframe>
+    <div class="maintenance-card">
+        <!-- Ikon Gear yang Berputar -->
+        <span class="material-icons icon-wrapper">settings</span>
+
+        <h1>Sedang Dalam Perbaikan</h1>
+        <p>Halo warga! Saat ini Portal Warga sedang melakukan pembaruan sistem dan optimalisasi server untuk
+            meningkatkan kenyamanan Anda. Kami akan segera kembali dalam beberapa saat.</p>
+
+        <!-- Progress Bar Dinamis -->
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+
+        <!-- Tombol Kontak Pengurus -->
+        <a href="https://wa.me/6285320067726" target="_blank" class="btn-contact">
+            <span class="material-icons">support_agent</span>
+            Hubungi Pengurus
+        </a>
+    </div>
+
 </body>
 
 </html>
