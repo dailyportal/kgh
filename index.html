@@ -6,50 +6,83 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 
-    <title>Portal Warga</title>
-    <meta name="description" content="Aplikasi pelayanan warga, pembayaran IPL, dan pencatatan meteran air.">
-    <meta property="og:title" content="Portal Warga">
-    <meta property="og:description" content="Layanan mandiri warga untuk kemudahan akses informasi dan pembayaran.">
-    <meta property="og:image" content="https://lh3.googleusercontent.com/d/1nzRjcglyejSjSpiXG0iAn4tnIh7zUUz3">
+    <title>Mengalihkan ke Portal Warga...</title>
     <meta name="theme-color" content="#0d6efd">
     <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1nzRjcglyejSjSpiXG0iAn4tnIh7zUUz3">
     <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/1nzRjcglyejSjSpiXG0iAn4tnIh7zUUz3">
 
+    <!-- METODE 1: HTML Meta Refresh (Sangat cepat dieksekusi oleh browser sebelum merender halaman) -->
+    <meta http-equiv="refresh" content="0;url=https://portal.flows.workers.dev/">
+
+    <script>
+        // METODE 2: JavaScript Replace 
+        // Menggunakan replace() agar pengguna tidak terjebak saat menekan tombol 'Back'
+        window.location.replace("https://portal.flows.workers.dev/");
+    </script>
+
     <style>
-        /* Reset agar tidak ada margin bawaan */
+        /* Tampilan fallback yang bersih jika internet warga sangat lambat dan butuh waktu untuk redirect */
         html,
         body {
             height: 100%;
             width: 100%;
             margin: 0;
             padding: 0;
-            overflow: hidden;
-            /* PENTING: Mencegah scroll pada body utama */
             background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            text-align: center;
+            color: #333;
         }
 
-        /* Iframe dipaksa menempel ke 4 sisi layar */
-        iframe {
-            position: fixed;
-            /* KUNCI UTAMA: Fixed position agar tidak terdorong address bar */
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            z-index: 1;
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(13, 110, 253, 0.2);
+            border-top: 4px solid #0d6efd;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        a {
+            color: #0d6efd;
+            text-decoration: none;
+            font-weight: 500;
         }
     </style>
 </head>
 
 <body>
-
-    <iframe
-        src="https://script.google.com/macros/s/AKfycbxN3MgvCLqQwRvvg4bm_fWMOmpCj4HP27iEVV7B0GpFKCFA2XyoXhIStQ9LKAcLdaXt/exec"
-        allow="camera; microphone; geolocation; fullscreen">
-    </iframe>
+    <!-- Tampilan ramah pengguna saat proses transisi -->
+    <div class="spinner"></div>
+    <h2>Membuka Portal KGH...</h2>
+    <p>Jika halaman tidak dialihkan secara otomatis,<br><a href="https://portal.flows.workers.dev/">klik di sini</a>.
+    </p>
 </body>
 
 </html>
